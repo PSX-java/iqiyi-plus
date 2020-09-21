@@ -77,9 +77,9 @@ public class MovieController {
         try{
             if(file != null){
                 // 把图片转成base64编码的字符串
-                String base64Str = Base64.encodeBase64String(file.getBytes());
+            //    String base64Str = Base64.encodeBase64String(file.getBytes());
                 // 把base64编码的字符串保存到对象中, 会插入到表的pic字段中
-                movie.setMoviecover(base64Str);
+           //     movie.setMoviecover(base64Str);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -162,9 +162,9 @@ public class MovieController {
             // 2.把pic文件中数据写到 新的文件中
             try {
                 // 把图片转成base64编码的字符串
-                String base64Str = Base64.encodeBase64String(file.getBytes());
+         //       String base64Str = Base64.encodeBase64String(file.getBytes());
                 // 把base64编码的字符串保存到对象中, 会插入到表的pic字段中
-                movie.setMoviecover(base64Str);
+         //       movie.setMoviecover(base64Str);
 
                 // 把图片的数据写到新文件中
                 file.transferTo(newFile);

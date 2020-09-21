@@ -48,19 +48,19 @@
         left join
             region r
         on
-            r.id=ar.regionid
-        where a.id = #{id}
-    </select>
+                r.id=ar.regionid
+            where a.id = #{id}
+        </select>
 
-<!--    &lt;!&ndash;向actor表中插入演员的记录&ndash;&gt;-->
-<!--    <insert id="save" parameterType="Actor" >-->
-<!--        insert into-->
-<!--        actor (name,birthday,sex,description,pic )-->
-<!--        values-->
-<!--        (#{name},#{birthday},#{sex},#{description},#{pic})-->
+    <!--    &lt;!&ndash;向actor表中插入演员的记录&ndash;&gt;-->
+    <!--    <insert id="save" parameterType="Actor" >-->
+    <!--        insert into-->
+    <!--        actor (name,birthday,sex,description,pic )-->
+    <!--        values-->
+    <!--        (#{name},#{birthday},#{sex},#{description},#{pic})-->
 
-<!--        <selectKey resultType="Integer" order="AFTER" keyProperty="id">-->
-<!--            SELECT LAST_INSERT_ID() AS id-->
+    <!--        <selectKey resultType="Integer" order="AFTER" keyProperty="id">-->
+    <!--            SELECT LAST_INSERT_ID() AS id-->
 <!--        </selectKey>-->
 <!--    </insert>-->
 </mapper>

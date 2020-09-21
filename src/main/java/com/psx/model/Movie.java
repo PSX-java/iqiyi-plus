@@ -3,6 +3,7 @@ package com.psx.model;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -38,7 +39,7 @@ public class Movie extends Model {
 
     private String moviecover;
 
-    private LocalDate releaseDate;
+    private Date releaseDate;
 
     private String movieStars;
 

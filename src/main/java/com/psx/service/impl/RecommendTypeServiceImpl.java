@@ -21,10 +21,10 @@ public class RecommendTypeServiceImpl implements IRecommendTypeService {
     @Autowired
     private RecommendTypeMapper recommendTypeMapper;
 
-    @Override
-    public List<RecommendType> findAll() {
-        return recommendTypeMapper.findAll();
-    }
+//    @Override
+//    public List<RecommendType> findAll() {
+//        return recommendTypeMapper.findAll();
+//    }
 
     @Override
     public void nowRecommend(String ids) {

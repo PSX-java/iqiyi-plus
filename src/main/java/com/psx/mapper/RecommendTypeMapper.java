@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RecommendTypeMapper extends BaseMapper<Movie> {
+public interface RecommendTypeMapper extends BaseMapper<RecommendType> {
 
     // 查询所有选中的推荐类型
     public List<RecommendType> findRecommendList();
@@ -19,6 +19,6 @@ public interface RecommendTypeMapper extends BaseMapper<Movie> {
     // 取消所有已经被推荐的类型
     public void cancelRecommend();
 
-    // 查询所有推荐类型
-    List<RecommendType> findAll();
+//    // 查询所有推荐类型
+//    List<RecommendType> findAll();
 }

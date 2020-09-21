@@ -12,7 +12,7 @@
         <result property="rating" column="rating" />
         <result property="pic" column="pic" />
 
-        <collection  property="cateList"  ofType="com.psx.model.Type">
+        <collection  property="typeList"  ofType="com.psx.model.Type">
             <id property="id" column="cid" />
             <result property="catname" column="catname" />
         </collection>

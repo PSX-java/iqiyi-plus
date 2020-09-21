@@ -1,5 +1,6 @@
 package com.psx.controller;
 
+import com.psx.mapper.RecommendTypeMapper;
 import com.psx.model.RecommendType;
 import com.psx.service.IRecommendTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,14 @@ import java.util.List;
 @RequestMapping("recommendType")
 public class RecommendTypeController {
     @Autowired
+    private RecommendTypeMapper recommendTypeMapper;
+
+    @Autowired
     private IRecommendTypeService recommendTypeService;
 
     @GetMapping("findAll")
     public List<RecommendType> findAll(){
-        return recommendTypeService.findAll();
+        return recommendTypeMapper.selectList(null);
     }
 
     @GetMapping("nowRecommend")
