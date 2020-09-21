@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.psx.mapper.ActorMapper">
+    <resultMap type="com.psx.model.Actor" id="actorMap">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="birthday" column="birthday" />
+        <result property="sex" column="sex" />
+        <result property="description" column="description" />
+        <result property="pic" column="pic" />
+
+        <collection  property="regions"  ofType="com.psx.model.Region">
+            <id property="id" column="rid" />
+            <result property="name" column="rname" />
+        </collection>
+    </resultMap>
+
+    <select id="findAll" resultMap="actorMap">
+        select
+          a.*,
+          r.id rid, r.name rname
+        from
+            actor a
+        left join
+            actor_region ar
+        on
+            a.id=ar.actorid
+        left join
+            region r
+        on
+            r.id=ar.regionid
+
+    </select>
+
+    <select id="findById" resultMap="actorMap">
+        select
+          a.*,
+          r.id rid, r.name rname
+        from
+            actor a
+        left join
+            actor_region ar
+        on
+            a.id=ar.actorid
+        left join
+            region r
+        on
+            r.id=ar.regionid
+        where a.id = #{id}
+    </select>
+
+<!--    &lt;!&ndash;向actor表中插入演员的记录&ndash;&gt;-->
+<!--    <insert id="save" parameterType="Actor" >-->
+<!--        insert into-->
+<!--        actor (name,birthday,sex,description,pic )-->
+<!--        values-->
+<!--        (#{name},#{birthday},#{sex},#{description},#{pic})-->
+
+<!--        <selectKey resultType="Integer" order="AFTER" keyProperty="id">-->
+<!--            SELECT LAST_INSERT_ID() AS id-->
+<!--        </selectKey>-->
+<!--    </insert>-->
+</mapper>
