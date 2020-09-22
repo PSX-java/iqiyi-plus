@@ -26,4 +26,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public List<User> findAllUser(){
         return userMapper.findAllUser();
     }
+
+    @Override
+    public String saveUser(User user) {
+        userMapper.saveUser(user);
+        return "数据已添加";
+    }
+//
+//    public String update(User user){
+//        userMapper.update(user,null);
+//        return "修改成功";
+//    }
 }

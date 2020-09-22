@@ -19,4 +19,11 @@ public interface UserMapper extends BaseMapper<User> {
 
     public List<User> findAllUser();
 
+    int save(User user);
+
+    void saveUser(User user);
+
+//    String update(User user);
+
+
 }

@@ -23,6 +23,8 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
+//通过该注解可以控制getter和setter方法的形式。
+
 public class Actor extends Model {
 
     private static final long serialVersionUID = 1L;

@@ -19,6 +19,8 @@ public interface IMovieService extends IService<Movie> {
 
     void deleteMovie(int movieId);
 
+    public void saveMovie(Movie movie);
+
     void update(Movie movie);
 
     public List<Movie> findAll();

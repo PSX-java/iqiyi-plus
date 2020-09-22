@@ -29,9 +29,5 @@ public class User extends Model {
 
     private String password;
 
-    private Boolean enabled;
-
-    private Boolean locked;
-
 
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.io.File;
 import java.io.IOException;
@@ -77,15 +78,15 @@ public class MovieController {
         try{
             if(file != null){
                 // 把图片转成base64编码的字符串
-            //    String base64Str = Base64.encodeBase64String(file.getBytes());
+                String base64Str = Base64.encodeBase64String(file.getBytes());
                 // 把base64编码的字符串保存到对象中, 会插入到表的pic字段中
-           //     movie.setMoviecover(base64Str);
+                movie.setMoviecover(base64Str);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
         System.out.println("controller movie = " + movie);
-        movieService.save(movie);
+        movieService.saveMovie(movie);
 
         // 上传缩略图
         FileLoad.uploadFile(file, uploadDir);

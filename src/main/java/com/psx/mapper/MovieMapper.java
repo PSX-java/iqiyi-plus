@@ -22,6 +22,7 @@ public interface MovieMapper extends BaseMapper<Movie> {
 
     public List<Movie> findAll();
 
+    public void saveMovie(Movie movie);
 
     void deleteMovieAndtypes(int movieId);
 
@@ -30,7 +31,7 @@ public interface MovieMapper extends BaseMapper<Movie> {
     void deleteById(int movieId);
 
     // 根据当前电影的类型查询出与该电影类型相同的最新的前3条电影
-    List<Movie> findTop3ByCates(int movieId);
+    List<Movie> findTop3ByTypes(int movieId);
 
     // 根据当前电影的演员查询出与该电影演员相同的最新的前3条电影
     List<Movie> findTop3ByActors(int movieId);

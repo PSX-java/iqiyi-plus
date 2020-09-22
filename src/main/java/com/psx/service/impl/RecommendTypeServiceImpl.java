@@ -38,4 +38,6 @@ public class RecommendTypeServiceImpl implements IRecommendTypeService {
             recommendTypeMapper.nowRecommend(Integer.parseInt(id));
         }
     }
+
+
 }

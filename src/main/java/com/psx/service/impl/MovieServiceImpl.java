@@ -58,7 +58,21 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie> implements
         movieMapper.deleteById(movieId);
     }
 
-
+    @Override
+    public void saveMovie(Movie movie) {
+        // 1.向movie表中插入一条记录
+        movieMapper.saveMovie(movie);
+        int mid =  movie.getId();
+        System.out.println("id==" + mid);
+        System.out.println(movie.getTypes());
+        // 2.向电影和类型的中间表中插入记录:
+        String  categories = movie.getTypes();
+        String[] cateArray = categories.split(",");
+        for (String cid : cateArray) {
+            MovieType mac = new MovieType(mid,Integer.parseInt(cid));
+            movieMapper.insertMovieAndCategory(mac);
+        }
+    }
 
 
     @Override
@@ -110,7 +124,7 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie> implements
             if(r.getId() == 1){
                 // 表示按照 类型推荐
                 // 按照电影的类型查询出最新的前3条电影
-                List<Movie> top3ByCates = movieMapper.findTop3ByCates(movieId);
+                List<Movie> top3ByCates = movieMapper.findTop3ByTypes(movieId);
                 // 添加到recommendMovieList中
                 // recommendMovieList.addAll(top3ByCates);
                 for (Movie m : top3ByCates) {

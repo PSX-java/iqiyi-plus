@@ -27,6 +27,7 @@ import java.util.Map;
  * @since 2020-09-20
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/actor")
 public class ActorController {
 

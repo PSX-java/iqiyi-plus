@@ -76,4 +76,85 @@
             type t
         on mc.typeid=t.id
     </select>
+
+
+    <select id="findTop3ByTypes" resultMap="movieMap">
+        select
+        m.*,
+        a.id aid,a.name aname,a.birthday abirthday,a.sex
+        asex,a.description adescription, a.pic apic,
+        t.id tid, t.movietype movietype
+        from
+        movie m
+        left join
+        movie_actor ma
+        on
+        m.id=ma.movieid
+        left join
+        actor a
+        on
+        ma.actorid=a.id
+        left join
+        movie_type mc
+        on
+        m.id=mc.movieid
+        left join
+        type t
+        on mc.typeid=t.id
+        where m.id != #{id} and m.id in (
+            select mcate.movieid from movie_type mcate
+						where mcate.movieid != #{id} and mcate.typeid in (
+                select mcc.id from movie mm
+                left join movie_type mcc on mcc.movieid = mm.id
+                where mm.id = #{id}
+            )
+        )
+        order by m.release_date desc
+		LIMIT 0, 3
+    </select>
+
+    <insert id="saveMovie" parameterType="com.psx.model.Movie">
+        insert into movie (name, pic, description, pub_date, time_length, director)
+        values (#{name},#{pic}, #{description}, #{pub_date},
+        #{time_length}, #{director})
+        <selectKey resultType="Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <select id="findTop3ByActors" resultMap="movieMap">
+        select
+        m.*,
+        a.id aid,a.name aname,a.birthday abirthday,a.sex
+        asex,a.description adescription, a.pic apic,
+        t.id tid, t.movietype movietype
+        from
+        movie m
+        left join
+        movie_actor ma
+        on
+        m.id=ma.movieid
+        left join
+        actor a
+        on
+        ma.actorid=a.id
+        left join
+        movie_type mc
+        on
+        m.id=mc.movieid
+        left join
+        type t
+        on mc.typeid=t.id
+        where m.id != #{id} and  m.id in (
+            select mac.movieid from movie_actor mac
+            where mac.movieid != #{id} and mac.actorid in (
+            # 查询这个电影的所有演员的id
+            select acc.id from actor acc
+            left join movie_actor macc on macc.actorid = acc.id
+            where macc.movieid = #{id}
+            )
+        )
+        order by m.release_date desc
+        LIMIT 0, 3
+    </select>
 </mapper>

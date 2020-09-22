@@ -1,7 +1,9 @@
 package com.psx.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 /**
@@ -12,8 +14,8 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
  * @version: $
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
+@AllArgsConstructor
+@NoArgsConstructor
 public class RecommendType extends Model {
 
     private int id;

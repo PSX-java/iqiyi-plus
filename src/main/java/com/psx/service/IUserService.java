@@ -17,4 +17,7 @@ public interface IUserService extends IService<User> {
 
         public List<User> findAllUser();
 
+//        String update(User user);
+
+        String saveUser(User user);
 }

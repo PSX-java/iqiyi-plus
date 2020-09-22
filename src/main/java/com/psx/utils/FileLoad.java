@@ -2,20 +2,16 @@ package com.psx.utils;
 
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-/**
- * @author ：psx
- * @date ：Created in 2020/9/20 22:14
- * @description：文件上传
- * @modified By：
- * @version: $
- */
 public class FileLoad {
+
+
     // 上传文件,上传成功后返回存储的路径
     public static String uploadFile(@RequestParam("file") MultipartFile file,
                                     String uploadDir) {
